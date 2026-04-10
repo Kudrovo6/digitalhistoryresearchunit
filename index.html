@@ -337,6 +337,73 @@
     }
     .btn:hover::after { transform: translateX(140%); }
 
+        .impact-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+
+    .impact-card {
+      position: relative;
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.1);
+      background:
+        radial-gradient(circle at top right, rgba(111,242,209,.12), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+      overflow: hidden;
+    }
+
+    .impact-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -24px -32px auto;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(119,169,255,.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .impact-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: #dce8ff;
+      font-size: .8rem;
+      letter-spacing: -.01em;
+    }
+
+    .impact-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: .95rem;
+    }
+
+    .impact-number {
+      display: block;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+      margin-bottom: 8px;
+    }
+
+    .impact-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.5;
+      max-width: 24ch;
+    }
+
 
     .community-card {
       display: inline-flex;
