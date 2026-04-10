@@ -337,6 +337,7 @@
     }
     .btn:hover::after { transform: translateX(140%); }
 
+
     .community-card {
       display: inline-flex;
       align-items: center;
@@ -375,7 +376,7 @@
       color: var(--muted);
       font-size: .88rem;
     }
-    
+
     .stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -658,12 +659,11 @@
               한국역사연구회 디지털역사학연구반(디역반)의 활동, 주요 자료, 논저, 연혁을 정리한 페이지입니다. 디지털역사학에 관심이 있는 모든 선생님들을 환영합니다.</p>
             <div class="cta-row">
               <a class="btn btn-primary" href="https://forms.gle/Sf2URLGBffEQ4Dcn9" target="_blank" rel="noreferrer">참여 신청</a>
-              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1GuL_v5oHCqg6-b-Lk7tU2JWhBKWWOh0b/view" target="_blank" rel="noreferrer">디역반 출범 선언문</a>
+              <a class="btn btn-secondary" href="https://www.kadh.org/%ED%95%9C%EA%B5%AD%EC%97%AD%EC%82%AC%EC%97%B0%EA%B5%AC%ED%9A%8C-%EB%94%94%EC%A7%80%ED%84%B8%EC%97%AD%EC%82%AC%ED%95%99%EC%97%B0%EA%B5%AC%EB%B0%98/" target="_blank" rel="noreferrer">연구반 안내 보기</a>
               <a class="btn btn-secondary" href="https://sites.google.com/view/thenlab/network-resources/digital-history-research-unit" target="_blank" rel="noreferrer">기존 연구반 홈페이지</a>
             </div>
-          </div>
 
-          <div class="community-card tilt" aria-label="오늘 기준 연구반 참여 인원">
+            <div class="community-card tilt" aria-label="오늘 기준 연구반 참여 인원">
               <div class="community-badge" aria-hidden="true">👥</div>
               <div class="community-copy">
                 <strong id="communityStatus">43명 / today</strong>
@@ -700,15 +700,15 @@
             <div class="contact-list">
               <div class="card-item tilt">
                 <small>조교</small>
-                <a href="mailto:thdcldud0@gmail.com">송치영(연세대학교)</a>
+                <a href="mailto:thdcldud0@gmail.com">송치영 조교(연세대)</a>
               </div>
               <div class="card-item tilt">
                 <small>조교</small>
-                <a href="mailto:pioneer1827@gmail.com">박정희(동국대학교)</a>
+                <a href="mailto:pioneer1827@gmail.com">박정희 조교(동국대)</a>
               </div>
               <div class="card-item tilt">
                 <small>반장</small>
-                <a href="mailto:dhwoo1234@kaist.ac.kr">우동현(한국과학기술원)</a>
+                <a href="mailto:dhwoo1234@kaist.ac.kr">우동현 반장</a>
               </div>
             </div>
           </section>
@@ -896,9 +896,6 @@ Developed by Dr. Donghyun Woo (KAIST) using ChatGPT-5.4
       if (communityDateLabel) communityDateLabel.textContent = `${formattedDate} 기준 디역반 구성원`;
     }
 
-    
-    const counters = document.querySelectorAll('[data-count]');
-
     function calculateSince() {
       const start = new Date('2023-08-01T00:00:00');
       const today = new Date();
@@ -928,6 +925,7 @@ Developed by Dr. Donghyun Woo (KAIST) using ChatGPT-5.4
     }
 
     calculateSince();
+    updateCommunityStatus();
     const countObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
