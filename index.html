@@ -337,6 +337,45 @@
     }
     .btn:hover::after { transform: translateX(140%); }
 
+    .community-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      width: fit-content;
+      margin: 0 0 24px;
+      padding: 14px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(111,242,209,.22);
+      background: linear-gradient(135deg, rgba(111,242,209,.09), rgba(119,169,255,.08));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 16px 36px rgba(0,0,0,.18);
+    }
+
+    .community-badge {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 1.1rem;
+    }
+
+    .community-copy {
+      display: grid;
+      gap: 4px;
+    }
+
+    .community-copy strong {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      letter-spacing: -.03em;
+    }
+
+    .community-copy span {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    
     .stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -624,6 +663,15 @@
             </div>
           </div>
 
+          <div class="community-card tilt" aria-label="오늘 기준 연구반 참여 인원">
+              <div class="community-badge" aria-hidden="true">👥</div>
+              <div class="community-copy">
+                <strong id="communityStatus">43명 / today</strong>
+                <span id="communityDateLabel">오늘 접속일 기준 디역반 참여 인원</span>
+              </div>
+            </div>
+          </div>
+
           <div class="stats">
             <div class="stat tilt">
               <strong id="sinceCount">0일</strong>
@@ -831,6 +879,24 @@ Developed by Dr. Donghyun Woo (KAIST) using ChatGPT-5.4
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+    const counters = document.querySelectorAll('[data-count]');
+    const COMMUNITY_COUNT = 43;
+
+    function updateCommunityStatus() {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      const formattedDate = `${yyyy}-${mm}-${dd}`;
+
+      const communityStatus = document.getElementById('communityStatus');
+      const communityDateLabel = document.getElementById('communityDateLabel');
+
+      if (communityStatus) communityStatus.textContent = `${COMMUNITY_COUNT}명 / ${formattedDate}`;
+      if (communityDateLabel) communityDateLabel.textContent = `${formattedDate} 기준 디역반 구성원`;
+    }
+
+    
     const counters = document.querySelectorAll('[data-count]');
 
     function calculateSince() {
